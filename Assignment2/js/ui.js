@@ -22,7 +22,6 @@ const rightSideNavCloseBtnListener = () => {
 };
 
 const eraseMainContent = () => {
-    console.log('clicked');
     const mainElement = document.querySelector('main');
     removeDOMChildren(mainElement);
 };
