@@ -33,7 +33,7 @@ const removeDOMChildren = (element) => {
     }
 };
 
-// If click on a disease title, will erase main content 
+// If click on a disease title, will erase main content and display start view of medical algorithm
 const diseaseClickListener = () => {
     const diseases = document.querySelectorAll('.disease_title');
     for(disease of diseases) {
