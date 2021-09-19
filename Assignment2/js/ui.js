@@ -69,7 +69,7 @@ const favoriteStarClickEventListener = () => {
             changeFavoriteStarColor(star);          
         });
     });
-}
+};
 
 
 // Change the favorite star's color class
@@ -81,7 +81,7 @@ const changeFavoriteStarColor = (star) => {
         star.classList.remove('yellow-text');
         star.classList.add('white-text');
     }
-}
+};
 
 
 
