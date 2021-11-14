@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Outpatient Medical Algorithms</title>
+    <title>Add Treatments</title>
     <link rel="stylesheet" href="../css/materialize.min.css"/>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     
@@ -19,8 +19,8 @@
             <a href="#" data-target="mobile-right-side-nav" class="sidenav-trigger right"><i class="material-icons">menu</i></a>
             <ul class="right hide-on-med-and-down">
                 <li><a href="../index.html">Home</a></li>
-                <li><a href="./about.html">About</a></li>
-                <li class="active"><a href="./contact.html">Contact</a></li>
+                <li class="active"><a href="./about.html">About</a></li>
+                <li><a href="./add.html">Add</a></li>
                 <li><a href="./references.html">References</a></li>
             </ul>
             <ul class="sidenav collection teal-text text-darken-4" id="mobile-right-side-nav">
@@ -29,21 +29,36 @@
                 </div>
                 
                 <li class="collection-item"><a href="../index.html">Home</a></li>
-                <li class="collection-item"><a href="./about.html">About</a></li>
-                <li class="collection-item teal darken-4"><a class="white-text" href="./contact.html">Contact</a></li>
+                <li class="collection-item active teal darken-4"><a class="white-text" href="./about.html">About</a></li>
+                <li class="collection-item"><a href="./add.html">Add</a></li>
                 <li class="collection-item"><a href="./references.html">References</a></li>
             </ul>
         </div>
     </nav>
     <main>
         <section>
-            <h4 class="page_header">Contact</h4>
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nemo nisi voluptatibus ad perferendis aspernatur cupiditate ab nihil, vel molestiae odit amet sapiente veritatis enim architecto esse corporis provident a ea?</p>
+            <h4 class="page_header">Add Condition</h4>
+            <form id="add_condition_form" class="col s12">
+                <div class="row">
+                  <div class="input-field col s12">
+                    <input placeholder="Condition Name" id="condition_name" name="condition_name" type="text" class="validate">
+                    <label for="condition_name">Name</label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="input-field col s12">
+                    <textarea id="treatments" placeholder="Enter each treatment on a new line" name="condition_treatments" class="materialize-textarea"></textarea>
+                    <label for="treatments">Treatments</label>
+                  </div>
+                </div>
+                <button id="add_condition_btn" class="waves-effect waves-light btn-large teal darken-4" type="submit">Add<i class="large material-icons material-icons right">add</i></button>
+              </form>
         </section>
     </main>
+    
 
-    <script src="../js/ui.js">
-        
-    </script>
+    <script src="../js/app.js"></script>
+    <script src="../js/ui.js"></script>
+    <script type="module" async src="../js/db.js"></script>
 </body>
 </html>

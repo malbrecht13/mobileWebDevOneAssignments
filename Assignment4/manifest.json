@@ -1,0 +1,26 @@
+{
+    "name": "Outpatient Medical Algorithms",
+    "short_name": "OMA",
+    "description": "Evidence-based outpatient medical algorithms",
+    "start_url": "./pages/index.html",
+    "scope": ".",
+    "display": "standalone",
+    "orientation": "portrait-primary",
+    "background_color": "#004d40",
+    "theme_color": "#004d40",
+    "dir": "ltr",
+    "lang": "en-US",
+    "icons": [
+        {
+            "src": "./images/android-chrome-192x192.png",
+            "type": "image/png",
+            "sizes": "192x192"
+        },
+        {
+            "src": "./images/android-chrome-512x512.png",
+            "type": "image/png",
+            "sizes": "512x512"
+        }
+    ]
+
+}
