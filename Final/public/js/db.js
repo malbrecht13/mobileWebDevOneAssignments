@@ -48,21 +48,14 @@ const unsub = onSnapshot(collection(db, 'conditions'), (doc) => {
             editBtnListener();
         }
         if(change.type === 'modified') {
-          const conditions_section = document.getElementById('conditions_section');
-            removeDOMChildren(conditions_section);
-            setUpConditions(doc);
           diseaseClickListener();
           editBtnListener();
         }
         if(change.type === 'removed') {
             removeCondition(change.doc.id);
-            const conditions_section = document.getElementById('conditions_section');
-            removeDOMChildren(conditions_section);
-            setUpConditions(doc);
             diseaseClickListener();
             editBtnListener();
         }
-        resetIconListeners();
     });
 
 });
@@ -160,7 +153,6 @@ const resetIconListeners = () => {
       btn.addEventListener('click', e => {
         const id = e.target.getAttribute('data-id');
         deleteDoc(doc(db, 'conditions', id));
-        rerenderConditions();
       });
     });
     // change whether condition is a favorite by clicking on the star icon
