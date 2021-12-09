@@ -110,6 +110,10 @@ textarea {
   display: none;
 }
 
+#search {
+  padding-left: 10px;
+}
+
 @media only screen and (min-width: 768px) {
   .favorite_btn_container {
     flex-direction: row;
