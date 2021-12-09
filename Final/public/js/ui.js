@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
     M.Collapsible.init(items);
 
     addListeners();
+
 });
 
 

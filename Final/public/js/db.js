@@ -73,6 +73,7 @@ if(addForm) {
     }).catch(e => console.log(e));
     event.target.condition_name.value = '';
     event.target.condition_treatments.value = '';
+    window.navigator.vibrate([200,100,200]);
     alert('Condition added');
   });
 }
@@ -118,31 +119,6 @@ if(editForm) {
       instance.close(); // close the edit modal when done
   });
 }
-
-// It seemed I had to add setTimeout for these functions to work correctly due to a difference in when the different
-// js scripts were called
-// setTimeout(() => {
-//   // delete condition
-//   const deleteBtns = document.querySelectorAll('.delete');
-//   deleteBtns.forEach(btn => {
-//     btn.addEventListener('click', e => {
-//       const id = e.target.getAttribute('data-id');
-//       deleteDoc(doc(db, 'conditions', id));
-//     });
-//   });
-//   // change whether condition is a favorite by clicking on the star icon
-//   const favoriteStars = document.querySelectorAll('.favorite-star');
-//   favoriteStars.forEach(star => {
-//     star.addEventListener('click', async e => {
-//       const shouldBeFavorite = star.innerText === 'star_outline' ? false : true;
-//       const id = e.target.getAttribute('data-id');
-//       const favoriteRef = doc(db, 'conditions', id);
-//       await updateDoc(favoriteRef, {
-//         isFavorite: shouldBeFavorite
-//       });
-//     });
-//   }) 
-// },1000);
 
 // reestablish icon listeners for after rerender
 const resetIconListeners = () => {
@@ -237,6 +213,7 @@ const diseaseClickListener = () => {
       disease.addEventListener('click', () => {
           eraseMainContent();
           displayTreatments(id);
+          window.navigator.vibrate([200,100,200]);
       });
   }
 };
