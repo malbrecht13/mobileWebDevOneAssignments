@@ -1,8 +1,8 @@
 {
-    "name": "Outpatient Medical Algorithms",
-    "short_name": "OMA",
-    "description": "Evidence-based outpatient medical algorithms",
-    "start_url": "./pages/index.html",
+    "name": "Medical Treatment Notebook",
+    "short_name": "MTN",
+    "description": "Helps health care providers keep track of frequently used treatments",
+    "start_url": "./index.html",
     "scope": ".",
     "display": "standalone",
     "orientation": "portrait-primary",
@@ -12,12 +12,12 @@
     "lang": "en-US",
     "icons": [
         {
-            "src": "./images/android-chrome-192x192.png",
+            "src": "./images/caduceus192x192.png",
             "type": "image/png",
             "sizes": "192x192"
         },
         {
-            "src": "./images/android-chrome-512x512.png",
+            "src": "./images/caduceus512x512.png",
             "type": "image/png",
             "sizes": "512x512"
         }

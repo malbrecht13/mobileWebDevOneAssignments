@@ -1,39 +1,63 @@
+// setup materialize components
 document.addEventListener('DOMContentLoaded', function() {
     const rightSideNav = document.querySelector('.sidenav');
     M.Sidenav.init(rightSideNav,{edge: 'right', draggable: 'true'});
 
+    var elems = document.querySelectorAll('.modal');
+    var instances = M.Modal.init(elems);
+
+    var items = document.querySelectorAll(".collapsible");
+    M.Collapsible.init(items);
+
     addListeners();
 });
 
+
+
 const addListeners = () => {
     rightSideNavCloseBtnListener();
-    diseaseClickListener();
     favoriteStarClickEventListener();
 };
 
-const renderCondition = (data, id) => {
-    const html = `<div class="row condition" data-id=${id} data-treatments=${data.treatments}>
-    <div class="col s12 m6 offset-m3">
-      <div class="card teal darken-4 algo_card z-depth-2">
-        <div class="card-content white-text">
-            <div class="row algo_card_row">
-                <p class="col s10 disease_title">${data.name}</p>   
-                <i class="material-icons right delete" data-id=${id}>delete</i>
-                <i class="material-icons right favorite-star">star_outline</i>
-            </div>
-        </div>
-      </div>
-    </div>
-  </div>`;
-  let displayDiv = document.getElementById('conditions_section');
-  displayDiv.innerHTML += html;
-  diseaseClickListener();
-  favoriteStarClickEventListener();
+const setupUI = user => {
+  const loggedOutLinks = document.querySelectorAll('.logged-out');
+  const loggedInLinks = document.querySelectorAll('.logged-in');
+  if(user) {
+    loggedOutLinks.forEach((item) => {
+      item.style.display = 'none';
+    })
+    loggedInLinks.forEach((item) => {
+      item.style.display = 'block';
+    })
+  } else {
+    loggedOutLinks.forEach((item) => {
+      item.style.display = 'block';
+    })
+    loggedInLinks.forEach((item) => {
+      item.style.display = 'none';
+    })
+  }
 }
+
+
+
+
+
+const makeCursorAPointer = () => {
+  const icons = document.querySelectorAll('i');
+  icons.forEach(icon => {
+    icon.style.cursor = 'pointer';
+  });
+  const diseases = document.querySelectorAll('.algo_card_row');
+  diseases.forEach(disease => {
+    disease.style.cursor = 'pointer';
+  });
+};
 
 // remove condition from DOM
 const removeCondition = (id) => {
-  const itemToDelete = document.querySelector(`.condition[data-id=${id}]`);
+  
+  const itemToDelete = document.querySelector(`.condition[data-id='${id}']`);
   removeDOMChildren(itemToDelete);
 };
 
@@ -45,6 +69,12 @@ const rightSideNavCloseBtnListener = () => {
     closeBtn.addEventListener('click', () => {
         sideNavInstance.close();
     });
+    const logoutBtn = document.getElementById('sidenav_logout_btn');
+    if(logoutBtn) {
+      logoutBtn.addEventListener('click', () => {
+        sideNavInstance.close();
+      });
+    }
 };
 
 const eraseMainContent = () => {
@@ -54,34 +84,14 @@ const eraseMainContent = () => {
 
 // Destroy child nodes of a DOM element
 const removeDOMChildren = (element) => {
+  if(element) {
     while(element.firstChild) {
         element.removeChild(element.lastChild);
     }
+  }
 };
 
-// If click on a disease title, will erase main content and display start view of medical algorithm
-const diseaseClickListener = () => {
-    const diseases = document.querySelectorAll('.disease_title');
-    for(disease of diseases) {
-        const algoName = disease.innerText;
-        disease.addEventListener('click', () => {
-            eraseMainContent();
-            displayAlgo(algoName);
-        });
-    }
-};
 
-// Displays the start view of the algorithm
-const displayAlgo = (algoName) => {
-    const mainElement = document.querySelector('main');
-    const heading = document.createElement('h5');
-    const body = document.createElement('p');
-    heading.innerText = algoName;
-    body.innerText = 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Explicabo fugiat excepturi ea consectetur nihil aut quia aliquam, enim minus facilis voluptatum harum error, dignissimos sint accusamus, aliquid est veritatis? Quas.';
-    heading.classList.add('page_header');
-    mainElement.appendChild(heading);
-    mainElement.appendChild(body);
-};
 
 // Toggles favorite star icon to either star_outline or star upon click
 const favoriteStarClickEventListener = () => {
@@ -108,6 +118,9 @@ const changeFavoriteStarColor = (star) => {
         star.classList.add('white-text');
     }
 };
+
+
+
 
 
 

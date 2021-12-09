@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medical Treatment Notebook</title>
+    <link rel="stylesheet" href="./css/materialize.min.css"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
+    <script type="text/javascript" src="./js/materialize.min.js"></script>
+    <link rel="stylesheet" href="./css/app.css"/>
+    <link rel="manifest" href="./manifest.json">
+</head>
+<body>
+    <nav class="teal darken-4 hoverable z-depth-2">
+        <div class="nav-wrapper">
+            <a href="./index.html" class="brand-logo logo_title left">Medical Treatment Notebook</a>
+            <a href="#" data-target="mobile-right-side-nav" class="sidenav-trigger right"><i class="material-icons">menu</i></a>
+            <ul class="right hide-on-med-and-down">
+                <li class="active"><a href=".">Home</a></li>
+                <li><a href="./about.html">About</a></li>
+                <li class="logged-in"><a href="./add.html">Add</a></li>
+                <li class="logged-in">
+                  <a href="#" class="waves-effect logout">Logout</a>
+                </li>
+                <li class="logged-out">
+                  <a href="#" class="waves-effect modal-trigger" data-target="modal-login">Login</a>
+                </li>
+                <li class="logged-out">
+                  <a href="#" class="waves-effect modal-trigger" data-target="modal-signup">Sign up</a>
+                </li>
+            </ul>
+            <ul class="sidenav collection teal-text text-darken-4" id="mobile-right-side-nav">
+                <div class="row">
+                    <li class="collection-header"><h4>Navigation<button id="close-right-sidenav" href="#" class="waves-effect waves-light btn right teal darken-4">Close</button></h4></li> 
+                </div>
+                
+                <li class="collection-item active teal darken-4"><a class="white-text" href=".">Home</a></li>
+                <li class="collection-item"><a href="./about.html">About</a></li>
+                <li class="logged-in collection-item"><a href="./add.html">Add</a></li>
+                <li class="logged-in collection-item" id="sidenav_logout_btn">
+                  <a href="#" class="waves-effect logout">Logout</a>
+                </li>
+                <li class="logged-out collection-item">
+                  <a href="#" class="waves-effect modal-trigger" data-target="modal-login">Login</a>
+                </li>
+                <li class="logged-out collection-item">
+                  <a href="#" class="waves-effect modal-trigger" data-target="modal-signup">Sign up</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <main>
+        <div class="section container tile_section">
+            <div class="row">
+                <div class="col s12">
+                    <form autocomplete="off">
+                        <div class="input-field">
+                            <div class="row search_box">
+                                <i class="material-icons prefix">search</i>
+                                <input id="search" name="search" type="search" placeholder="Search Medical Algorithms"/>
+                            </div>
+                         </div>
+                    </form>
+                </div>
+            </div>
+            <div class="row">
+              <div class="favorite_btn_container">
+                <button class="btn btn-large favorite_btn" id="favorites_btn">Favorites <i class="material-icons right yellow-text">star</i></button>
+                <button class="btn btn-large favorite_btn" id="all_conditions_btn">All Conditions</button>
+              </div>
+
+            </div>
+        </div>
+
+        <section id="conditions_section"><br></section>
+
+    </main>
+
+    <section class="no_main center-align">
+      <h2>Welcome to the Medical Treatment Notebook!</h2>
+      <h3>Please Sign up or Login to use the app.</h3>
+      <img src="./images/caduceus512x512.png" alt="caduceus image"/>
+    </section>
+
+    <!-- SIGN UP MODAL -->
+    <div id="modal-signup" class="modal">
+      <div class="modal-content">
+        <h4>Sign Up</h4>
+        <form id="signup-form">
+          <div class="input-field">
+            <input type="email" id="signup-email" required>
+            <label for="signup-email">Email Address</label>
+          </div>
+          <div class="input_field">
+            <input type="password" id="signup-password" required>
+            <label for="signup-password">Choose password</label>
+          </div>
+          <button class="waves-effect waves-light btn-large teal darken-4">Sign up</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- LOGIN MODAL -->
+    <div class="modal" id="modal-login">
+      <div class="modal-content">
+        <h4>Login</h4><br/>
+        <form action="" id="login-form">
+          <div class="input-field">
+            <input type="email" id="login-email" name="login-email">
+            <label for="login-email">Email address</label>
+          </div>
+          <div class="input-field">
+            <input type="password" id="login-password" name="login-password">
+            <label for="login-password">Your password</label>
+          </div>
+          <button class="btn teal darken-4 z-depth-0">Login</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- ACCOUNT MODAL -->
+    <div id="modal-account" class="modal">
+      <div class="modal-content center-align">
+        <h4>Account details</h4><br/>
+        <div class="account-details"></div>
+      </div>
+    </div>
+
+    <!-- EDIT MODAL -->
+    <div id="edit_modal" class="modal" role="dialog">
+      <div class="modal-content">
+        <h4>Edit Condition</h4>
+        <form id="edit_condition_form" class="col s12">
+          <div class="row">
+            <div class="input-field col s12">
+              <input placeholder="Condition Name" id="edit_condition_name" name="edit_condition_name" type="text" class="validate">
+              <label for="condition_name">Name</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s12">
+              <textarea id="edit_condition_treatments" placeholder="Enter each treatment on a new line" name="edit_condition_treatments" class="materialize-textarea" rows="30"></textarea>
+              <label for="treatments">Treatments</label>
+            </div>
+          </div>
+          <button id="edit_condition_btn" class="waves-effect waves-light btn-large teal darken-4" type="submit">Save<i class="large material-icons material-icons right">edit</i></button>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancel</a>
+      </div>
+    </div>
+
+    <script src="./js/app.js"></script>
+    <script src="./js/ui.js"></script>
+    <script type="module" src="./js/db.js"></script>  
+    <script type="module" src="./js/auth.js"></script>
+</body>
+</html>
