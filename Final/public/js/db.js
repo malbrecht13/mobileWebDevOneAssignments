@@ -141,7 +141,6 @@ const resetIconListeners = () => {
         await updateDoc(favoriteRef, {
           isFavorite: shouldBeFavorite
         });
-        rerenderConditions();
       });
     });
     editBtnListener();
